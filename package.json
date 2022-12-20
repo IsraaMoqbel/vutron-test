@@ -1,0 +1,71 @@
+{
+  "name": "vutron",
+  "version": "1.0.0",
+  "description": "Quick Start Templates for Vite + Vue 3 + Electron",
+  "homepage": "https://vutron.jooy2.com",
+  "author": "jooy2 <jooy2.contact@gmail.com>",
+  "license": "MIT",
+  "main": "dist/main/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jooy2/vutron.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jooy2/vutron/issues"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development vite",
+    "build": "npm run build:pre && electron-builder -wml",
+    "build:pre": "npm run format:fix && vue-tsc --noEmit && cross-env NODE_ENV=production vite build",
+    "build:dir": "npm run build:pre && electron-builder --dir",
+    "build:mac": "npm run build:pre && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac",
+    "build:linux": "npm run build:pre && electron-builder --linux",
+    "build:win": "npm run build:pre && electron-builder --windows",
+    "lint": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter src",
+    "lint:fix": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
+    "format": "prettier .",
+    "format:fix": "prettier . --write",
+    "docs:install": "npm i --no-save vitepress vitepress-sidebar",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "npm run format:fix && vitepress build docs",
+    "docs:serve": "npm run docs:build && vitepress serve docs"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.9",
+    "pinia": "^2.0.28",
+    "vue": "^3.2.45",
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.1.6",
+    "vuetify": "^3.0.5"
+  },
+  "devDependencies": {
+    "@mdi/font": "^7.1.96",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "cross-env": "^7.0.3",
+    "electron": "^22.0.0",
+    "electron-builder": "^23.3.3",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.6.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-vue": "^9.8.0",
+    "prettier": "^2.8.1",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.2",
+    "vite-plugin-electron": "^0.11.1",
+    "vite-plugin-electron-renderer": "^0.11.3",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-vuetify": "^1.0.1",
+    "vue-eslint-parser": "^9.1.0",
+    "vue-tsc": "^1.0.14"
+  }
+}
